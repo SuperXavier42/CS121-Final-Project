@@ -80,7 +80,5 @@ int main(){
 
     User->calculate();
 
-    cout<<"Test\n";
-
     return 0;
 }
