@@ -74,7 +74,6 @@ class Calculator : public Computer{
 
 };
 
-
 int main(){
     Calculator* User = new Calculator();
 
