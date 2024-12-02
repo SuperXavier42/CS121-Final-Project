@@ -1,9 +1,10 @@
 #include <iostream>
+#include <math.h>
 
 using namespace std;
 
 class Computer{
-    private:
+    protected:
         bool on=false;
 
     public:
@@ -11,6 +12,8 @@ class Computer{
             if(this->on==false)this->on=true;
             if(this->on==true)this->on=false;
         }
+        virtual int calculate(){return 0;};
+        virtual void operation(){exit;};
 
 };
 
@@ -22,9 +25,31 @@ class Calculator : public Computer{
         //sets name for calculator I guess
         void setName(string name){this->name=name;}
 
+        void operation(){
+            if(on==false){
+                cout<<"\n";
+                string value;
+                cout<<"Power on device (y/n): ";
+                cin>>value;
+
+                cout<<"\n";
+                if(value=="y"){on=true;}
+                else if(value=="n"){exit;}
+            }
+            if(on==true){
+                int answer;
+                cout<<"Select Option: \n1) Calculate\n";
+                cin>>answer;
+
+                cout<<"\n";
+                if(answer==1){calculate();}
+            }
+
+        }
+
         //allows user to calculate a number using basic opperations
         int calculate(){
-            cout<<"Enter = for opperation to see result\n";
+            cout<<"Operations: + - * / % (= to exit)\n\n";
             cout<<"Enter number: ";
             //sets current val to the initial number
             cin>>this->current_val;
@@ -56,6 +81,9 @@ class Calculator : public Computer{
                     case '*':
                         this->current_val=this->current_val*temp;
                         break;
+                    case '%':
+                        this->current_val=fmod(this->current_val, temp);
+                        break;
                     case '=':
                         break;
                     
@@ -75,9 +103,9 @@ class Calculator : public Computer{
 };
 
 int main(){
-    Calculator* User = new Calculator();
+    Computer* User = new Calculator();
 
-    User->calculate();
+    User->operation();
 
     return 0;
 }
