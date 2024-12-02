@@ -107,5 +107,7 @@ int main(){
 
     User->operation();
 
+    cout<<"Test\n";
+
     return 0;
 }
