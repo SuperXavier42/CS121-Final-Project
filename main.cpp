@@ -9,8 +9,8 @@ class Computer{
 
     public:
         void powerDevice(){
-            if(this->on==false)this->on=true;
-            if(this->on==true)this->on=false;
+            if(on==false){on=true;}
+            else if(on==true){on=false;}
         }
         virtual int calculate(){return 0;};
         virtual void operation(){exit;};
@@ -33,16 +33,17 @@ class Calculator : public Computer{
                 cin>>value;
 
                 cout<<"\n";
-                if(value=="y"){on=true;}
+                if(value=="y"){powerDevice();}
                 else if(value=="n"){exit;}
             }
             if(on==true){
                 int answer;
-                cout<<"Select Option: \n1) Calculate\n";
+                cout<<"Select Option: \n1) Calculate\n2) Power Off\n";
                 cin>>answer;
 
                 cout<<"\n";
                 if(answer==1){calculate();}
+                if(answer==2){powerDevice();}
             }
 
         }
