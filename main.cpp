@@ -13,7 +13,7 @@ class Computer{
             else if(on==true){on=false;}
         }
         virtual int calculate(){return 0;};
-        virtual void operation(){exit;};
+        virtual void startUp(){exit;};
 
 };
 
@@ -25,7 +25,7 @@ class Calculator : public Computer{
         //sets name for calculator I guess
         void setName(string name){this->name=name;}
 
-        void operation(){
+        void startUp(){
             if(on==false){
                 cout<<"\n";
                 string value;
@@ -106,7 +106,7 @@ class Calculator : public Computer{
 int main(){
     Computer* User = new Calculator();
     
-    User->operation();
+    User->startUp();
 
     return 0;
 }
