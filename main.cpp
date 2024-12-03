@@ -93,10 +93,13 @@ class Calculator : public Computer{
                 cout<<"\nEnter operation: ";
                 cin>>opp;
 
-                if(opp=='=')break;
+                if(opp=='='){break;}
             }
             
-            cout<<"Final value: "<<this->current_val<<endl;
+            cout<<"Final value: "<<this->current_val<<"\n"<<endl;
+
+            startUp();
+
             return this->current_val;
         };
 
