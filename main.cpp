@@ -9,8 +9,7 @@ class Computer{
 
     public:
         void powerDevice(){
-            if(on==false){on=true;}
-            else if(on==true){on=false;}
+            on = !on;
         }
         virtual int calculate(){return 0;};
         virtual void startUp(){exit;};
@@ -104,9 +103,17 @@ class Calculator : public Computer{
 };
 
 int main(){
-    Computer* User = new Calculator();
+    Computer* Calc = new Calculator();
     
-    User->startUp();
+
+    int choice;
+    cout<<"Select Function:\n1) Calculator\n";
+    cin>>choice;
+
+    if(choice==1){
+        Calc->startUp();
+    }
+
 
     return 0;
 }
