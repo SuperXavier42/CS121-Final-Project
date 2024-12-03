@@ -105,7 +105,7 @@ class Calculator : public Computer{
 
 int main(){
     Computer* User = new Calculator();
-    cout<<"hi again\n";
+    cout<<"hi last time\n";
     User->operation();
 
     return 0;
