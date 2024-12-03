@@ -1,16 +1,19 @@
 #include <iostream>
+#include <math.h>
 
 using namespace std;
 
 class Computer{
-    private:
+    protected:
         bool on=false;
 
     public:
         void powerDevice(){
-            if(this->on==false)this->on=true;
-            if(this->on==true)this->on=false;
+            if(on==false){on=true;}
+            else if(on==true){on=false;}
         }
+        virtual int calculate(){return 0;};
+        virtual void operation(){exit;};
 
 };
 
@@ -22,9 +25,32 @@ class Calculator : public Computer{
         //sets name for calculator I guess
         void setName(string name){this->name=name;}
 
+        void operation(){
+            if(on==false){
+                cout<<"\n";
+                string value;
+                cout<<"Power on device (y/n): ";
+                cin>>value;
+
+                cout<<"\n";
+                if(value=="y"){powerDevice();}
+                else if(value=="n"){exit;}
+            }
+            if(on==true){
+                int answer;
+                cout<<"Select Option: \n1) Calculate\n2) Power Off\n";
+                cin>>answer;
+
+                cout<<"\n";
+                if(answer==1){calculate();}
+                if(answer==2){powerDevice();}
+            }
+
+        }
+
         //allows user to calculate a number using basic opperations
         int calculate(){
-            cout<<"Enter = for opperation to see result\n";
+            cout<<"Operations: + - * / % (= to exit)\n\n";
             cout<<"Enter number: ";
             //sets current val to the initial number
             cin>>this->current_val;
@@ -56,6 +82,9 @@ class Calculator : public Computer{
                     case '*':
                         this->current_val=this->current_val*temp;
                         break;
+                    case '%':
+                        this->current_val=fmod(this->current_val, temp);
+                        break;
                     case '=':
                         break;
                     
@@ -75,9 +104,9 @@ class Calculator : public Computer{
 };
 
 int main(){
-    Calculator* User = new Calculator();
-
-    User->calculate();
+    Computer* User = new Calculator();
+    cout<<"hi\n";
+    User->operation();
 
     return 0;
 }
