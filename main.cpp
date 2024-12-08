@@ -9,11 +9,10 @@ class Computer{
 
     public:
         void powerDevice(){
-            if(on==false){on=true;}
-            else if(on==true){on=false;}
+            on = !on;
         }
         virtual int calculate(){return 0;};
-        virtual void operation(){exit;};
+        virtual void startUp(){exit;};
 
 };
 
@@ -25,7 +24,7 @@ class Calculator : public Computer{
         //sets name for calculator I guess
         void setName(string name){this->name=name;}
 
-        void operation(){
+        void startUp(){
             if(on==false){
                 cout<<"\n";
                 string value;
@@ -94,19 +93,28 @@ class Calculator : public Computer{
                 cout<<"\nEnter operation: ";
                 cin>>opp;
 
-                if(opp=='=')break;
+                if(opp=='='){break;}
             }
             
-            cout<<"Final value: "<<this->current_val<<endl;
+            cout<<"Final value: "<<this->current_val<<"\n"<<endl;
+
+            startUp();
+
             return this->current_val;
         };
 
 };
 
 int main(){
-    Computer* User = new Calculator();
-    cout<<"hi last time\n";
-    User->operation();
+    Computer* Calc = new Calculator();
+  
+    int choice;
+    cout<<"Select Function:\n1) Calculator\n";
+    cin>>choice;
+
+    if(choice==1){
+        Calc->startUp();
+    }
 
     return 0;
 }
