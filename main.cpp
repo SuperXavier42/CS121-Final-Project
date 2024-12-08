@@ -107,8 +107,7 @@ class Calculator : public Computer{
 
 int main(){
     Computer* Calc = new Calculator();
-    
-
+  
     int choice;
     cout<<"Select Function:\n1) Calculator\n";
     cin>>choice;
@@ -116,7 +115,6 @@ int main(){
     if(choice==1){
         Calc->startUp();
     }
-
 
     return 0;
 }
