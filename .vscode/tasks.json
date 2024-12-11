@@ -1,0 +1,31 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: g++.exe build active file",
+			"command": "C:/msys64/ucrt64/bin/g++.exe",
+			"args": [
+                "-g",
+                "${workspaceFolder}/main.cpp",
+				"${workspaceFolder}/libraries/graphing.cpp",
+				"${workspaceFolder}/libraries/config.cpp",
+                "-o",
+                "${workspaceFolder}/main.exe",
+                "-I\"${workspaceFolder}/libraries/SFML-2.6.2/include\"",
+                "-L\"${workspaceFolder}/libraries/SFML-2.6.2/lib\"",
+                "-lsfml-graphics",
+                "-lsfml-window",
+                "-lsfml-system"
+			],
+			"options": {
+				"cwd": "C:/msys64/ucrt64/bin"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: C:/msys64/ucrt64/bin/g++.exe"
+		}
+	]
+}
